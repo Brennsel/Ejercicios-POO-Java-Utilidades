@@ -35,7 +35,7 @@ import java.util.Scanner;
 public class CadenaServicio {
 
     Scanner leer = new Scanner(System.in);
-    Cadena texto = new Cadena("hola");
+    Cadena texto = new Cadena("hola mundo");
 
 
     public void mostrarVocales() {

@@ -51,7 +51,7 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.print("Ingrese una nueva frase: ");
+                    System.out.print("Ingrese una nueva frase a comparar: ");
                     frase4 = leer.next();
 
                     cs.compararLongitud(frase4);
