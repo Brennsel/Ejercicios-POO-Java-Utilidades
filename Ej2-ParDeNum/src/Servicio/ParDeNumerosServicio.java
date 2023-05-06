@@ -24,7 +24,7 @@ public class ParDeNumerosServicio {
         System.out.println("Numero 2: " +ParDeNumeros.getN2());
     }
 
-    public static Double devolverMayor(){
+    public static double devolverMayor(){
 
         if(ParDeNumeros.getN1()>ParDeNumeros.getN2()){
             return ParDeNumeros.getN1();
