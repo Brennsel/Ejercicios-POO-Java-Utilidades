@@ -60,7 +60,7 @@ public class PersonaServicio {
 
         int edad = fechaActual.getYear() - pers.getFechaDeNac().getYear();
 
-        if (pers.getFechaDeNac().getMonth() < fechaActual.getMonth()) {
+        if (pers.getFechaDeNac().getMonth() > fechaActual.getMonth()) {
 
             edad--;
 
