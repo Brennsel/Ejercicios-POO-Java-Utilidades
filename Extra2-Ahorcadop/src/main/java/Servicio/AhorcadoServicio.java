@@ -45,10 +45,7 @@ public class AhorcadoServicio {
         System.out.print("Ingrese la cantidad de jugadas maximas:  ");
         int max = leer.nextInt();
 
-        for (int i = 0; i < palabra.length(); i++) {
 
-            letras[i] = palabra.charAt(i);
-        }
 
         juego.setPalabra(letras);
         juego.setCantJugadasMax(max);
@@ -107,12 +104,22 @@ public class AhorcadoServicio {
         crearJuego();
         longitud();
 
-        System.out.print("Ingrese una letra a buscar: ");
-        char letra = leer.next().charAt(0);
+        do {
+            System.out.println("============================================");
+            System.out.print("Ingrese una letra a buscar: ");
+            char letra = leer.next().charAt(0);
 
-        buscar(letra);
-        encontradas(letra);
-        intentos();
+            buscar(letra);
+            encontradas(letra);
+            intentos();
+
+            if(juego.getCantJugadasMax()==0){
+                System.out.println("Perdiste! Se acabaron los intentos.");
+            } else if(juego.getCantLetrasEncontradas()==juego.getPalabra().length){
+                System.out.println("Ganaste! Palabra descubierta.");
+            }
+
+        }while(juego.getCantJugadasMax()!=0 || juego.getCantLetrasEncontradas()!=juego.getPalabra().length);
 
     }
 
