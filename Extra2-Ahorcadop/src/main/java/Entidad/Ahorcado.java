@@ -7,6 +7,8 @@ puede realizar el usuario
 
 package Entidad;
 
+import java.util.Arrays;
+
 public class Ahorcado {
 
     private char[] palabra;
@@ -14,7 +16,7 @@ public class Ahorcado {
     private int cantJugadasMax;
 
     public Ahorcado() {
-        this.cantLetrasEncontradas=0;
+        this.cantLetrasEncontradas = 0;
     }
 
     public char[] getPalabra() {
@@ -22,7 +24,7 @@ public class Ahorcado {
     }
 
     public void setPalabra(char[] palabra) {
-        this.palabra = palabra;
+        this.palabra = Arrays.copyOf(palabra, palabra.length);
     }
 
     public int getCantLetrasEncontradas() {

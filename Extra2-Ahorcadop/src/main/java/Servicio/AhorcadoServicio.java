@@ -42,10 +42,13 @@ public class AhorcadoServicio {
 
         char[] letras = new char[palabra.length()];
 
+        for (int i = 0; i < palabra.length(); i++) {
+
+            letras[i] = palabra.charAt(i);
+        }
+
         System.out.print("Ingrese la cantidad de jugadas maximas:  ");
         int max = leer.nextInt();
-
-
 
         juego.setPalabra(letras);
         juego.setCantJugadasMax(max);
@@ -58,35 +61,40 @@ public class AhorcadoServicio {
 
     public boolean buscar(char letra) {
 
-        if (Arrays.toString(juego.getPalabra()).contains(String.valueOf(letra))) {
-            System.out.println("La letra se encuentra en la palabra.");
-            return true;
-        } else {
-            System.out.println("La letra NO se encuentra en la palabra.");
-            return false;
+        char[] palabraAux = juego.getPalabra();
+
+        for (int i = 0; i < juego.getPalabra().length; i++) {
+
+            if (palabraAux[i] == letra) {
+
+                return true;
+            }
         }
+
+        return false;
     }
 
     public void encontradas(char letra) {
 
         int cantEncontradas = 0;
+        char[] palabraAux = juego.getPalabra();
 
-        do {
+        if (buscar(letra)) {
 
-            if (buscar(letra)) {
+            System.out.println("La letra se encuentra en la palabra.");
 
-                for (int i = 0; i < juego.getPalabra().length; i++) {
+            for (int i = 0; i < juego.getPalabra().length; i++) {
 
-                    if (Arrays.toString(juego.getPalabra()).charAt(i) == letra) {
-                        cantEncontradas++;
-                    }
+                if (palabraAux[i] == letra) {
+                    cantEncontradas++;
                 }
-            } else {
-
-                juego.setCantJugadasMax(juego.getCantJugadasMax() - 1);
             }
+        } else {
 
-        } while (juego.getCantJugadasMax() != 0);
+            System.out.println("La letra NO se encuentra en la palabra.");
+
+            juego.setCantJugadasMax(juego.getCantJugadasMax() - 1);
+        }
 
         juego.setCantLetrasEncontradas(juego.getCantLetrasEncontradas() + cantEncontradas);
 
@@ -106,22 +114,21 @@ public class AhorcadoServicio {
 
         do {
             System.out.println("============================================");
-            System.out.print("Ingrese una letra a buscar: ");
+            System.out.print("\nIngrese una letra a buscar: ");
             char letra = leer.next().charAt(0);
 
             buscar(letra);
             encontradas(letra);
             intentos();
 
-            if(juego.getCantJugadasMax()==0){
+            if (juego.getCantJugadasMax() == 0) {
                 System.out.println("Perdiste! Se acabaron los intentos.");
-            } else if(juego.getCantLetrasEncontradas()==juego.getPalabra().length){
+
+            } else if (juego.getCantLetrasEncontradas() == juego.getPalabra().length) {
                 System.out.println("Ganaste! Palabra descubierta.");
             }
 
-        }while(juego.getCantJugadasMax()!=0 || juego.getCantLetrasEncontradas()!=juego.getPalabra().length);
+        } while (juego.getCantJugadasMax() != 0 && juego.getCantLetrasEncontradas() != juego.getPalabra().length);
 
     }
-
-
 }
