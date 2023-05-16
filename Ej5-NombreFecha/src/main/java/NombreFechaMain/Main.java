@@ -18,9 +18,9 @@ public class Main {
         int edad = leer.nextInt();
 
         if (ps.menorQue(p1, edad)) {
-            System.out.println(p1.getNombre() + " tiene menor edad que la comparada.");
+            System.out.println(p1.getNombre() + " tiene menor edad que la comparada");
         } else {
-            System.out.println(p1.getNombre() + " tiene mayor edad que la comparada.");
+            System.out.println(p1.getNombre() + " tiene mayor edad que la comparada");
         }
 
         ps.mostrarPersona(p1);
